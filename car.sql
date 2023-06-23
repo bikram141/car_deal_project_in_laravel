@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 05:17 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Jun 23, 2023 at 07:59 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kilvishcars`
+-- Database: `car`
 --
 
 -- --------------------------------------------------------
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -44,7 +44,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `phone_number`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@admin.com', '7064155716', NULL, '$2y$10$rGJmlxkvzuCCIILiFbO2UO1S4YptaxLo0mpbOQBPsE9RujsTbOcA6', NULL, '2022-03-09 14:52:49', '2022-03-09 14:52:49');
+(1, 'Admin', 'admin@admin.com', '7064155716', NULL, '$2y$10$rGJmlxkvzuCCIILiFbO2UO1S4YptaxLo0mpbOQBPsE9RujsTbOcA6', '72nzI0ymFd2Ka8H8odwLJinx3EL8SUNTkJiRtvEsJxhBwID8NJUnA1uAPoOM', '2022-03-09 14:52:49', '2022-03-09 14:52:49');
 
 -- --------------------------------------------------------
 
@@ -54,16 +54,16 @@ INSERT INTO `admins` (`id`, `name`, `email`, `phone_number`, `email_verified_at`
 
 CREATE TABLE `bookings` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mobile_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `alternative_phone_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `subject` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `car_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Name` varchar(255) DEFAULT NULL,
+  `mobile_no` varchar(255) DEFAULT NULL,
+  `alternative_phone_no` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL,
+  `car_name` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -83,8 +83,8 @@ INSERT INTO `bookings` (`id`, `Name`, `mobile_no`, `alternative_phone_no`, `emai
 
 CREATE TABLE `car_brands` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `brand_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `brand_name` varchar(255) DEFAULT NULL,
+  `Image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -94,11 +94,11 @@ CREATE TABLE `car_brands` (
 --
 
 INSERT INTO `car_brands` (`id`, `brand_name`, `Image`, `created_at`, `updated_at`) VALUES
-(1, 'HONDA', '1647546215.png', NULL, '2022-03-17 14:13:35'),
-(2, 'TOYOTA', '1647546517.png', NULL, '2022-03-17 14:18:37'),
-(3, 'FORD', '1647546459.png', NULL, '2022-03-17 14:17:39'),
-(4, 'TATA', '1647546470.png', NULL, '2022-03-17 14:17:50'),
-(5, 'SUZUKI', '1647546483.png', NULL, '2022-03-17 14:18:03');
+(1, 'HONDA', '1687456890.png', NULL, '2023-06-22 12:31:30'),
+(2, 'TOYOTA', '1687456902.png', NULL, '2023-06-22 12:31:42'),
+(3, 'FORD', '1687456913.png', NULL, '2023-06-22 12:31:53'),
+(4, 'TATA', '1687456926.png', NULL, '2023-06-22 12:32:06'),
+(5, 'SUZUKI', '1687456938.png', NULL, '2023-06-22 12:32:18');
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,7 @@ INSERT INTO `car_brands` (`id`, `brand_name`, `Image`, `created_at`, `updated_at
 
 CREATE TABLE `car_fuel_types` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `fuel_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fuel_type` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -129,17 +129,17 @@ INSERT INTO `car_fuel_types` (`id`, `fuel_type`, `created_at`, `updated_at`) VAL
 
 CREATE TABLE `car_sells` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Model` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Kilometer_run` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Year_of_registration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Price` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Fuel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Name` varchar(255) DEFAULT NULL,
+  `Type` varchar(255) DEFAULT NULL,
+  `Model` varchar(255) DEFAULT NULL,
+  `Kilometer_run` varchar(255) DEFAULT NULL,
+  `Year_of_registration` varchar(255) DEFAULT NULL,
+  `Price` varchar(255) DEFAULT NULL,
+  `Fuel` varchar(255) DEFAULT NULL,
+  `Brand` varchar(255) DEFAULT NULL,
+  `Color` varchar(255) DEFAULT NULL,
+  `Image` varchar(255) DEFAULT NULL,
+  `images` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -149,20 +149,20 @@ CREATE TABLE `car_sells` (
 --
 
 INSERT INTO `car_sells` (`id`, `Name`, `Type`, `Model`, `Kilometer_run`, `Year_of_registration`, `Price`, `Fuel`, `Brand`, `Color`, `Image`, `images`, `created_at`, `updated_at`) VALUES
-(59, 'BALENO DELTA', 'Used vehicle', 'Baleno Delta', '7000km', '2021', '7,00,000', 'PETROL', 'SUZUKI', NULL, '1647023977.png', '', '2022-03-11 13:09:37', '2022-03-11 13:09:37'),
-(60, 'HYUNDAI I20', 'Used vehicle', '2013', '80000', '2013', '3,50,000', 'PETROL', NULL, 'White', '1647024443.png', '', '2022-03-11 13:17:23', '2022-03-11 13:17:23'),
-(61, 'HYUNDAI I20', 'Used vehicle', 'Sportz model', '35000', '2014', ' 4,10,000', 'PETROL', NULL, 'Gray', '1647024591.jpeg', '', '2022-03-11 13:19:51', '2022-03-11 13:19:51'),
-(62, 'BOLERO PICKUP', 'Used vehicle', 'BOLERO PICKUP', '60000 km', '2020', '7,10,000', 'PETROL', NULL, 'White', '1647024777.png', '', '2022-03-11 13:22:57', '2022-03-11 13:22:57'),
-(63, 'HYUNDAI I10', 'Used vehicle', '2013 model', '40000', '2013', '2,50,000', 'PETROL', NULL, 'Blue', '1647024976.png', '', '2022-03-11 13:26:16', '2022-03-11 13:26:16'),
-(64, 'SCORPIO', 'Used vehicle', '2009 model', '100000', '2009', '3,00,000', 'PETROL', NULL, 'White', '1647025157.png', '', '2022-03-11 13:29:17', '2022-03-11 13:29:17'),
-(65, 'WAGON', 'Used vehicle', 'Wagon VXI', '30000 km', '2019', ' 4,00,000', 'PETROL', 'SUZUKI', NULL, '1647025297.png', '', '2022-03-11 13:31:37', '2022-03-11 13:31:37'),
-(66, 'SUZUKI S-CROSS', 'Used vehicle', 'S-CROSS', '43000', NULL, '6,50,000', 'DISEL', 'SUZUKI', NULL, '1647025471.jpg', '', '2022-03-11 13:34:31', '2022-03-11 13:34:31'),
-(67, 'FORD ECOSPORT', 'Used vehicle', '2014', '60300', '2014', '5,90,000', 'PETROL', 'FORD', 'black', '1647025607.jpg', '', '2022-03-11 13:36:47', '2022-03-11 13:36:47'),
-(68, 'SWIFT ZXI', 'Used vehicle', 'SWIFT ZXI', '13000 km', NULL, '6,20,000', 'PETROL', 'SWIFT', 'blue', '1647025737.png', '', '2022-03-11 13:38:57', '2022-03-11 13:38:57'),
-(69, 'TUV 300', 'Used vehicle', 'TUV 300', '72000 km', NULL, ' 6,30,000', 'PETROL', NULL, 'White', '1647025826.png', '', '2022-03-11 13:40:26', '2022-03-11 13:40:26'),
-(70, 'I20 ACTIVE', 'Used vehicle', '2015', NULL, '2015', ' 5,60,000', 'PETROL', NULL, NULL, '1647025928.png', '', '2022-03-11 13:42:08', '2022-03-11 13:42:08'),
-(71, 'Suzuki swift vxi', 'Used vehicle', 'Vxi', '54000', '2015', '330000', 'PETROL', 'SUZUKI', 'Silver', '1647460131.jpg', '', '2022-03-16 14:18:51', '2022-03-16 14:18:51'),
-(72, 'Swift', 'Used vehicle', 'Swift', '40000', '2015', '4.2lac', 'PETROL', 'SWIFT', 'Red', '1647760991.jpg', '', '2022-03-20 01:53:11', '2022-03-20 01:53:11');
+(59, 'BALENO DELTA', 'Used vehicle', 'Baleno Delta', '7000km', '2021', '7,00,000', 'PETROL', 'SUZUKI', NULL, '1687458108.jpg', '[\"baleno_interior1.jpg\",\"baleno_interior2.jpg\"]', '2022-03-11 13:09:37', '2023-06-22 12:51:48'),
+(60, 'HYUNDAI I20', 'Used vehicle', '2013', '80000', '2013', '3,50,000', 'PETROL', NULL, 'White', '1687457770.jpg', '[\"verna_back.jpg\",\"verna_side1.jpg\"]', '2022-03-11 13:17:23', '2023-06-22 12:46:10'),
+(61, 'HYUNDAI I20', 'Used vehicle', 'Sportz model', '35000', '2014', '4,10,000', 'PETROL', NULL, 'Gray', '1687457734.jpeg', '[\"i20_back.jpeg\",\"i20_int2.jpeg\"]', '2022-03-11 13:19:51', '2023-06-22 12:45:34'),
+(62, 'BOLERO PICKUP', 'Used vehicle', 'BOLERO PICKUP', '60000 km', '2020', '7,10,000', 'PETROL', NULL, 'White', '1687457958.png', '[\"bolero-back2.png\",\"bolero_f.png\"]', '2022-03-11 13:22:57', '2023-06-22 12:49:18'),
+(63, 'HYUNDAI I10', 'Used vehicle', '2013 model', '40000', '2013', '2,50,000', 'PETROL', NULL, 'Blue', '1687457677.png', '[\"i10_front (3).png\",\"i10_int.png\",\"i10_left.png\"]', '2022-03-11 13:26:16', '2023-06-22 12:44:37'),
+(64, 'SCORPIO', 'Used vehicle', '2009 model', '100000', '2009', '3,00,000', 'PETROL', NULL, 'White', '1687457986.png', '[\"Scorpio_back.png\",\"Scorpio_stearing.png\"]', '2022-03-11 13:29:17', '2023-06-22 12:49:46'),
+(65, 'WAGON', 'Used vehicle', 'Wagon VXI', '30000 km', '2019', '4,00,000', 'PETROL', 'SUZUKI', NULL, '1687457868.png', '[\"wagon-left.png\",\"wagon-back.png\"]', '2022-03-11 13:31:37', '2023-06-22 12:47:48'),
+(66, 'SUZUKI S-CROSS', 'Used vehicle', 'S-CROSS', '43000', NULL, '6,50,000', 'DISEL', 'SUZUKI', NULL, '1687457850.jpg', '[\"suzuki_eeco_back.jpg\",\"suzuki_eeco_side1.jpg\"]', '2022-03-11 13:34:31', '2023-06-22 12:47:30'),
+(67, 'FORD ECOSPORT', 'Used vehicle', '2014', '60300', '2014', '5,90,000', 'PETROL', 'FORD', 'black', '1687458054.jpg', '', '2022-03-11 13:36:47', '2023-06-22 12:50:54'),
+(68, 'SWIFT ZXI', 'Used vehicle', 'SWIFT ZXI', '13000 km', NULL, '6,20,000', 'PETROL', NULL, 'blue', '1687458071.jpg', '', '2022-03-11 13:38:57', '2023-06-22 12:51:11'),
+(69, 'TUV 300', 'Used vehicle', 'TUV 300', '72000 km', NULL, '6,30,000', 'PETROL', NULL, 'White', '1687458169.png', '', '2022-03-11 13:40:26', '2023-06-22 12:52:49'),
+(70, 'I20 ACTIVE', 'Used vehicle', '2015', NULL, '2015', '5,60,000', 'PETROL', NULL, NULL, '1687458130.png', '', '2022-03-11 13:42:08', '2023-06-22 12:52:10'),
+(71, 'Suzuki swift vxi', 'Used vehicle', 'Vxi', '54000', '2015', '330000', 'PETROL', 'SUZUKI', 'Silver', '1687458192.png', '', '2022-03-16 14:18:51', '2023-06-22 12:53:12'),
+(72, 'Swift', 'Used vehicle', 'Swift', '40000', '2015', '4.2lac', 'PETROL', NULL, 'white', '1687458321.jpeg', '', '2022-03-20 01:53:11', '2023-06-22 12:55:38');
 
 -- --------------------------------------------------------
 
@@ -172,7 +172,7 @@ INSERT INTO `car_sells` (`id`, `Name`, `Type`, `Model`, `Kilometer_run`, `Year_o
 
 CREATE TABLE `car_types` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `car_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `car_type` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -192,11 +192,11 @@ INSERT INTO `car_types` (`id`, `car_type`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -208,7 +208,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -241,7 +241,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `multiple_images` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `car_sells_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `images` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -253,8 +253,8 @@ CREATE TABLE `multiple_images` (
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -266,11 +266,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -283,11 +283,11 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(255) NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `payload` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` text NOT NULL,
   `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -296,7 +296,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('NSZoTlLevkoGzC0nJ6Nio5ZoDKvVcuBXzvFiDOKD', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiUDlFNzN1N0FWdldPNDVHUWtZZTg3UnZxbWZBVTNGTHYzcXV1amdyeSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1647965304);
+('aabILOk7OkvfZPbtvFnNKdhk9xaX3fTxll7tHoTU', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiUkFaazg3U2lvZ1RHaXFZV25EdmF5R0g0blJmMUk1SDMzVENWV0xJTyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbl9sb2dpbiI7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1687499262),
+('BIM0TL0ak5mNoGlT6bbSgSk6377Vw2LmiYRaak4N', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQkZKWTNscU44ejAwc3JwOUZRbzh0b3g0QlJicUFuZjN1WnVxOVY2byI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1687499363);
 
 -- --------------------------------------------------------
 
@@ -306,15 +307,15 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `two_factor_secret` text DEFAULT NULL,
+  `two_factor_recovery_codes` text DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `profile_photo_path` varchar(2048) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `profile_photo_path` varchar(2048) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
